@@ -1,0 +1,13 @@
+[Unit]
+Description=Servicio de envío de mensaje de Discord en arranque
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/usr/bin/python3 /mnt/botDiscord.py 0
+ExecStop=/usr/bin/python3 /mnt/botDiscord.py 1
+
+[Install]
+WantedBy=multi-user.target
